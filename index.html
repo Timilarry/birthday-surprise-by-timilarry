@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy 17th Birthday Waleola 💙</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Confetti Library (for confetti + fireworks) -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0a1aff, #1e90ff, #5dade2);
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .container {
+      padding: 40px 15px 80px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+    }
+
+    .countdown {
+      font-size: 1.2rem;
+      margin: 20px 0;
+      background: rgba(0,0,0,0.25);
+      padding: 15px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .photo img {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid white;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    .yes {
+      background: #00ffea;
+      color: #003;
+      font-weight: bold;
+    }
+
+    .no {
+      background: #001;
+      color: white;
+      position: relative;
+    }
+
+    .footer {
+      margin-top: 60px;
+      font-size: 0.9rem;
+      opacity: 0.85;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0) scale(1); opacity: 1; }
+      to { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Music -->
+  <audio autoplay loop>
+    <source src="radiance.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="container">
+    <h1>Happy 17th Birthday Waleola Oluwatetisimi Favour 🎉💙</h1>
+
+    <div class="countdown" id="countdown">Loading countdown...</div>
+
+    <p>
+      Happy 17th birthday my love. I’m really happy to celebrate this with you.  
+      Thank you for being with me through my ups and downs — I appreciate you so much,  
+      my Fulani babyyyyyyyy 😘
+    </p>
+
+    <p>
+      I remember when you used to say you could never be happy.  
+      I’m happy you’re happy now, because your smile is the best thing I pray for every day of my life.  
+      Even when I’m feeling down, you hold my hands and tell me it’s going to be fine.  
+      I appreciate everything you do and even the ones I can’t say.
+    </p>
+
+    <p>
+      Once again, thank you for being Tetisimi.  
+      I, Emmanuel Oluwatimisola (Timisola), will love you always. ❤️
+    </p>
+
+    <div class="photo">
+      <img src="herpic.jpg" alt="Waleola">
+      <p>My beautiful queen 👑</p>
+    </div>
+
+    <p>Will you continue to be my forever person? 💍</p>
+
+    <div class="buttons">
+      <button class="yes" onclick="celebrate()">Yes 😘</button>
+      <button class="no" id="noBtn">No 🙃</button>
+    </div>
+
+    <div class="footer">
+      Made with ❤️ by Emmanuel Oluwatimisola
+    </div>
+  </div>
+
+  <script>
+    // Popup on load
+    window.onload = function() {
+      alert("💙 Surprise my love! This page was made specially for you. I hope it makes you smile today and always 💙");
+    };
+
+    // Funny No button
+    const noBtn = document.getElementById("noBtn");
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * 200 - 100;
+      const y = Math.random() * 200 - 100;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    // Confetti + Fireworks on Yes
+    function celebrate() {
+      alert("Yaaay! I love you forever ❤️🎆");
+      confetti({ particleCount: 200, spread: 120, origin: { y: 0.6 } });
+      fireworksBurst();
+    }
+
+    // Floating hearts
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerText = "💙";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 600);
+
+    // Countdown (Feb 4)
+    const birthday = new Date(new Date().getFullYear(), 1, 4, 0, 0, 0);
+    function updateCountdown() {
+      const now = new Date().getTime();
+      let diff = birthday - now;
+
+      if (diff < 0) {
+        document.getElementById("countdown").innerHTML = "🎉 It's your birthday today! 🎉";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("countdown").innerHTML =
+        `⏳ Countdown to your day:<br>
+         <strong>${days} days ${hours} hrs ${minutes} mins ${seconds} secs</strong>`;
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Fireworks effect (auto burst every few seconds)
+    function fireworksBurst() {
+      confetti({
+        particleCount: 120,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 }
+      });
+      confetti({
+        particleCount: 120,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 }
+      });
+    }
+
+    setInterval(fireworksBurst, 5000);
+  </script>
+
+</body>
+</html>
